@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="p10-miage-m1-webservice-shop-backend:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>p10-miage-m1-webservice-shop-backend</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="p10-miage-m1-webservice-shop-backend-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="p10-miage-m1-webservice-shop-backend:war exploded" />
+    </root>
+  </artifact>
+</component>
