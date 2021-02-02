@@ -1,6 +1,6 @@
-package com.p10.miage.m1.webservice.p10_miage_m1_webservice_shop_backend.dao;
+package com.p10.miage.m1.webservice.p10_miage_m1_webservice_shop_backend.data;
 
-import com.p10.miage.m1.webservice.p10_miage_m1_webservice_shop_backend.model.Item;
+import com.p10.miage.m1.webservice.p10_miage_m1_webservice_shop_backend.models.Item;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,10 +9,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ItemDAO implements DAO<Item> {
 
+    private static ItemDAO instance;
+
     private static AtomicInteger idCounter = new AtomicInteger();
     private static Map<Integer, Item> data = new HashMap<>();
 
-    public ItemDAO() {
+    static {
+        data.put(idCounter.getAndIncrement(), new Item("label1", "brand1", 100, "pic1"));
+        data.put(idCounter.getAndIncrement(), new Item("label2", "brand2", 200, "pic2"));
+    }
+
+    private ItemDAO() {
+    }
+
+    public static ItemDAO getInstance() {
+        if (instance == null)
+            instance = new ItemDAO();
+        return instance;
     }
 
     @Override
@@ -22,14 +35,14 @@ public class ItemDAO implements DAO<Item> {
 
     @Override
     public Optional<Item> get(int id) {
-        Item rtr = data.get(id);
-        return Optional.ofNullable(rtr);
+        Item item = data.get(id);
+        return Optional.ofNullable(item);
     }
 
     @Override
-    public int save(Item obj) {
+    public int save(Item item) {
         int newId = idCounter.getAndIncrement();
-        data.put(newId, obj);
+        data.put(newId, item);
         return newId;
     }
 

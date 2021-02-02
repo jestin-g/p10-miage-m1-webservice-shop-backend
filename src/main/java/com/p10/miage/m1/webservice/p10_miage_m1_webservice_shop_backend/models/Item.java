@@ -1,4 +1,4 @@
-package com.p10.miage.m1.webservice.p10_miage_m1_webservice_shop_backend.model;
+package com.p10.miage.m1.webservice.p10_miage_m1_webservice_shop_backend.models;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;

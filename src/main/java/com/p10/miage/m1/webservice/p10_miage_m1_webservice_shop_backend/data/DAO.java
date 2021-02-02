@@ -1,4 +1,4 @@
-package com.p10.miage.m1.webservice.p10_miage_m1_webservice_shop_backend.dao;
+package com.p10.miage.m1.webservice.p10_miage_m1_webservice_shop_backend.data;
 
 import java.util.Map;
 import java.util.Optional;
