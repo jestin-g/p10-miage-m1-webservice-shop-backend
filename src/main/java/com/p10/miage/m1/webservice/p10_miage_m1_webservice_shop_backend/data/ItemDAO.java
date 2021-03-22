@@ -11,12 +11,12 @@ public class ItemDAO implements DAO<Item> {
 
     private static ItemDAO instance;
 
-    private static AtomicInteger idCounter = new AtomicInteger();
-    private static Map<Integer, Item> data = new HashMap<>();
+    private static final AtomicInteger idCounter = new AtomicInteger();
+    private static final Map<Integer, Item> data = new HashMap<>();
 
     static {
-        data.put(idCounter.getAndIncrement(), new Item("label1", "brand1", 100, "pic1"));
-        data.put(idCounter.getAndIncrement(), new Item("label2", "brand2", 200, "pic2"));
+        data.put(idCounter.getAndIncrement(), new Item("label1", "brand1", "cat1", 100, "pic1"));
+        data.put(idCounter.getAndIncrement(), new Item("label2", "brand2","cat1", 200, "pic2"));
     }
 
     private ItemDAO() {

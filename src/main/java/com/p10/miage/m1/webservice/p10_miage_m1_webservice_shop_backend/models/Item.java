@@ -7,17 +7,27 @@ import java.util.Objects;
 public class Item {
     private String label;
     private String brand;
+    private String category;
     private double price;
     private String picture;
 
     public Item() {
     }
 
-    public Item(String label, String brand, double price, String picture) {
+    public Item(String label, String brand, String category, double price, String picture) {
         this.label = label;
+        this.category = category;
         this.brand = brand;
         this.price = price;
         this.picture = picture;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getLabel() {

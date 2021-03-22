@@ -14,7 +14,7 @@ import java.util.Optional;
 @Path("/item")
 public class ItemResource {
 
-    private ItemDAO dao = ItemDAO.getInstance();
+    private final ItemDAO dao = ItemDAO.getInstance();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
