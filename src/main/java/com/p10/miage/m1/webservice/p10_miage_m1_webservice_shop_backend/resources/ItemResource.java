@@ -20,7 +20,8 @@ public class ItemResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response all() {
         Map<Integer, Item> all = dao.all();
-        return Response.ok(all).build();
+        all.forEach((integer, item) -> item.setId(integer));
+        return Response.ok(all.values().toArray()).build();
     }
 
     @GET
@@ -29,9 +30,28 @@ public class ItemResource {
     public Response get(@PathParam("id") int id) {
         Optional<Item> item = dao.get(id);
         if (item.isPresent()) {
+            item.get().setId(id);
             return Response.ok(item.get()).build();
         }
         return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    @GET
+    @Path("category/{category}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByCategory(@PathParam("category") String category) {
+        Map<Integer, Item> res = dao.getByCategory(category);
+        res.forEach((integer, item) -> item.setId(integer));
+        return Response.ok(res.values().toArray()).build();
+    }
+
+    @GET
+    @Path("maincategory/{category}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByMainCategory(@PathParam("category") String category) {
+        Map<Integer, Item> res = dao.getByMainCategory(category);
+        res.forEach((integer, item) -> item.setId(integer));
+        return Response.ok(res.values().toArray()).build();
     }
 
     @POST
